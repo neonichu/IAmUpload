@@ -1,6 +1,6 @@
 # IAmUpload
 
-[![CI Status](http://img.shields.io/travis/neonichu/IAmUpload.svg?style=flat)](https://travis-ci.org/Boris Bügling/IAmUpload)
+[![CI Status](http://img.shields.io/travis/neonichu/IAmUpload.svg?style=flat)](https://travis-ci.org/neonichu/IAmUpload)
 [![Version](https://img.shields.io/cocoapods/v/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![License](https://img.shields.io/cocoapods/l/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![Platform](https://img.shields.io/cocoapods/p/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)

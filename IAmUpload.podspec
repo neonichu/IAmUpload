@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "IAmUpload"
   s.version          = "0.1.0"
-  s.summary          = "Objective-C for using the Uploads.im API."
+  s.summary          = "Objective-C library for using the Uploads.im API."
   s.homepage         = "https://github.com/neonichu/IAmUpload"
   s.license          = 'MIT'
   s.author           = { "Boris Bügling" => "boris@icculus.org" }

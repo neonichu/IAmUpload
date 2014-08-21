@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![Platform](https://img.shields.io/cocoapods/p/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 
-Objective-C for using the [Uploads.im](http://uploads.im/apidocs) API.
+Objective-C library for using the [Uploads.im](http://uploads.im/apidocs) API.
 
 ## Usage
 

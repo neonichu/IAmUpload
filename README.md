@@ -1,15 +1,15 @@
 # IAmUpload
 
-[![CI Status](http://img.shields.io/travis/Boris Bügling/IAmUpload.svg?style=flat)](https://travis-ci.org/Boris Bügling/IAmUpload)
+[![CI Status](http://img.shields.io/travis/neonichu/IAmUpload.svg?style=flat)](https://travis-ci.org/Boris Bügling/IAmUpload)
 [![Version](https://img.shields.io/cocoapods/v/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![License](https://img.shields.io/cocoapods/l/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![Platform](https://img.shields.io/cocoapods/p/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 
+Objective-C for using the [Uploads.im](http://uploads.im/apidocs) API.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Boris Bügling, boris@icculus.org
+Boris Bügling, boris@icculus.org
 
 ## License
 

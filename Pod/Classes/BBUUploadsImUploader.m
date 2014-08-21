@@ -57,9 +57,19 @@
     }];
 }
 
+#if TARGET_OS_IPHONE
 -(void)uploadImage:(UIImage *)image completionHandler:(BBUFileUploadHandler)handler {
     NSData* data = UIImageJPEGRepresentation(image, 1.0);
+#else
+-(void)uploadImage:(NSImage *)image completionHandler:(BBUFileUploadHandler)handler {
+    NSData *data = [image TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:data];
+    NSDictionary *imageProperties = @{ NSImageCompressionFactor: @(1.0) };
+    data = [imageRep representationUsingType:NSJPEGFileType properties:imageProperties];
+#endif
     [self uploadFileWithData:data completionHandler:handler];
 }
+
+
 
 @end

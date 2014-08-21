@@ -7,7 +7,6 @@
 //
 
 #import <IAmUpload/BBUFileUpload.h>
-#import <Foundation/Foundation.h>
 
 @interface BBUUploadsImUploader : NSObject <BBUFileUpload>
 

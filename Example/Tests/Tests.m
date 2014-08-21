@@ -13,6 +13,7 @@ SpecBegin(IAmUploadSpecs)
 describe(@"BBUUploadsImUploader", ^{
     beforeAll(^{
         [Expecta setAsynchronousTestTimeout:30.0];
+        setAsyncSpecTimeout(30.0);
     });
 
     it(@"can upload an image", ^AsyncBlock {

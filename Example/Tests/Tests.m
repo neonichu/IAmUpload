@@ -6,37 +6,31 @@
 //  Copyright (c) 2014 Boris Bügling. All rights reserved.
 //
 
-SpecBegin(InitialSpecs)
+#import <IAmUpload/BBUUploadsImUploader.h>
 
-describe(@"these will fail", ^{
+SpecBegin(IAmUploadSpecs)
 
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
+describe(@"BBUUploadsImUploader", ^{
+    beforeAll(^{
+        [Expecta setAsynchronousTestTimeout:30.0];
     });
 
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
-    
-    it(@"will wait and fail", ^AsyncBlock {
-        
-    });
-});
+    it(@"can upload an image", ^AsyncBlock {
+        [[BBUUploadsImUploader sharedUploader] uploadImage:[UIImage imageNamed:@"doge.jpeg"] completionHandler:^(NSURL *uploadURL, NSError *error) {
+            expect(uploadURL).toNot.beNil();
+            expect(error).to.beNil();
 
-describe(@"these will pass", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
-    });
-    
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^AsyncBlock {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            done();
-        });
+            [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:uploadURL]
+                                               queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response,
+                                                       NSData *data, NSError *connectionError) {
+                                       expect(data).toNot.beNil();
+                                       expect(connectionError).to.beNil();
+                                       expect([UIImage imageWithData:data]).toNot.beNil();
+
+                                       done();
+                                   }];
+        }];
     });
 });
 

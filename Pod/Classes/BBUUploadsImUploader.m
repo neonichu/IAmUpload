@@ -44,17 +44,24 @@
     NSParameterAssert(data);
     NSParameterAssert(handler);
 
-    [self.manager POST:@"api" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSString* URLString = [self.manager.baseURL URLByAppendingPathComponent:@"api"].absoluteString;
+
+    NSError* error;
+    NSURLRequest* request = [self.manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:URLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data
                                     name:@"upload"
                                 fileName:@"file.jpg"
                                 mimeType:@"image/jpeg"];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } error:&error];
+
+    AFHTTPRequestOperation* operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSURL* uploadUrl = [NSURL URLWithString:responseObject[@"data"][@"img_url"]];
         handler(uploadUrl, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         handler(nil, error);
     }];
+
+    [self.manager.operationQueue addOperation:operation];
 }
 
 #if TARGET_OS_IPHONE

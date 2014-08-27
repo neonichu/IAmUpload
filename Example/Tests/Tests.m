@@ -31,7 +31,7 @@ describe(@"BBUUploadsImUploader", ^{
 
                                        done();
                                    }];
-        }];
+        } progressHandler:nil];
     });
 });
 

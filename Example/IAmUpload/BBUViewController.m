@@ -32,7 +32,7 @@
                                          }
 
                                          [imageView setImageWithURL:uploadURL];
-                                     }];
+                                     } progressHandler:nil];
 }
 
 @end

@@ -40,7 +40,9 @@
     return self;
 }
 
--(void)uploadFileWithData:(NSData *)data completionHandler:(BBUFileUploadHandler)handler {
+-(void)uploadFileWithData:(NSData *)data
+        completionHandler:(BBUFileUploadHandler)handler
+          progressHandler:(BBUProgressHandler)progressHandler {
     NSParameterAssert(data);
     NSParameterAssert(handler);
 
@@ -61,11 +63,17 @@
         handler(nil, error);
     }];
 
+    if (progressHandler) {
+        [operation setUploadProgressBlock:progressHandler];
+    }
+
     [self.manager.operationQueue addOperation:operation];
 }
 
 #if TARGET_OS_IPHONE
--(void)uploadImage:(UIImage *)image completionHandler:(BBUFileUploadHandler)handler {
+-(void)uploadImage:(UIImage *)image
+ completionHandler:(BBUFileUploadHandler)handler
+   progressHandler:(BBUProgressHandler)progressHandler {
     NSData* data = UIImageJPEGRepresentation(image, 1.0);
 #else
 -(void)uploadImage:(NSImage *)image completionHandler:(BBUFileUploadHandler)handler {
@@ -74,7 +82,7 @@
     NSDictionary *imageProperties = @{ NSImageCompressionFactor: @(1.0) };
     data = [imageRep representationUsingType:NSJPEGFileType properties:imageProperties];
 #endif
-    [self uploadFileWithData:data completionHandler:handler];
+    [self uploadFileWithData:data completionHandler:handler progressHandler:progressHandler];
 }
 
 

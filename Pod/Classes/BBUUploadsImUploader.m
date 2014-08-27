@@ -76,7 +76,9 @@
    progressHandler:(BBUProgressHandler)progressHandler {
     NSData* data = UIImageJPEGRepresentation(image, 1.0);
 #else
--(void)uploadImage:(NSImage *)image completionHandler:(BBUFileUploadHandler)handler {
+-(void)uploadImage:(NSImage *)image
+ completionHandler:(BBUFileUploadHandler)handler
+   progressHandler:(BBUProgressHandler)progressHandler {
     NSData *data = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:data];
     NSDictionary *imageProperties = @{ NSImageCompressionFactor: @(1.0) };

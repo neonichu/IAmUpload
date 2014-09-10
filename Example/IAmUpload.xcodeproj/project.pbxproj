@@ -22,6 +22,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		A19D2EC919C046C7002D714D /* doge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1F35BC719A60D8F00654922 /* doge.jpeg */; };
 		A1F35BC819A60D8F00654922 /* doge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1F35BC719A60D8F00654922 /* doge.jpeg */; };
 		F4D41465127A451490C6547B /* libPods-IAmUpload.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0EFE15E5804F9A94966E09 /* libPods-IAmUpload.a */; };
 		F9A84E4843504C21B2D2D9DE /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F74B83EF39E400B8DD2C36A /* libPods-Tests.a */; };
@@ -268,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
+				A19D2EC919C046C7002D714D /* doge.jpeg in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,

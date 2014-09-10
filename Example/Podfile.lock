@@ -21,8 +21,8 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Expecta (0.3.1)
-  - IAmUpload (0.1.0):
-    - AFNetworking (~> 2.3)
+  - IAmUpload (0.2.0):
+    - AFNetworking (~> 2.3.1)
   - Specta (0.2.1)
 
 DEPENDENCIES:
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  IAmUpload: 721dd213af0e4b7da338fe40f2fee184db145461
+  IAmUpload: 13479a588be46a36467b8bb0cfaecd7efae4a07d
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1

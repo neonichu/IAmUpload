@@ -6,18 +6,21 @@
 //  Copyright (c) 2014 Boris Bügling. All rights reserved.
 //
 
+#import <IAmUpload/BBUPostImageUploader.h>
 #import <IAmUpload/BBUUploadsImUploader.h>
 
-SpecBegin(IAmUploadSpecs)
-
-describe(@"BBUUploadsImUploader", ^{
-    beforeAll(^{
-        [Expecta setAsynchronousTestTimeout:30.0];
-        setAsyncSpecTimeout(30.0);
+void _itTestForImageUpload(id self, id<BBUFileUpload> uploader) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        expect(uploader).toNot.beNil();
     });
 
+    if (!uploader) {
+        return;
+    }
+
     it(@"can upload an image", ^AsyncBlock {
-        [[BBUUploadsImUploader sharedUploader] uploadImage:[UIImage imageNamed:@"doge.jpeg"] completionHandler:^(NSURL *uploadURL, NSError *error) {
+        [uploader uploadImage:[UIImage imageNamed:@"doge.jpeg"] completionHandler:^(NSURL *uploadURL,
+                                                                                    NSError *error) {
             expect(uploadURL).toNot.beNil();
             expect(error).to.beNil();
 
@@ -33,6 +36,26 @@ describe(@"BBUUploadsImUploader", ^{
                                    }];
         } progressHandler:nil];
     });
+}
+
+SpecBegin(IAmUploadSpecs)
+
+describe(@"BBUPostImageUploader", ^{
+    beforeAll(^{
+        [Expecta setAsynchronousTestTimeout:30.0];
+        setAsyncSpecTimeout(30.0);
+    });
+
+    _itTestForImageUpload(self, [BBUPostImageUploader sharedUploader]);
+});
+
+describe(@"BBUUploadsImUploader", ^{
+    beforeAll(^{
+        [Expecta setAsynchronousTestTimeout:30.0];
+        setAsyncSpecTimeout(30.0);
+    });
+
+    _itTestForImageUpload(self, [BBUUploadsImUploader sharedUploader]);
 });
 
 SpecEnd

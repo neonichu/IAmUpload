@@ -5,7 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 [![Platform](https://img.shields.io/cocoapods/p/IAmUpload.svg?style=flat)](http://cocoadocs.org/docsets/IAmUpload)
 
-Objective-C library for using the [Uploads.im](http://uploads.im/apidocs) API.
+Objective-C library for uploading files to different webservices.
+
+Currently supported are:
+
+- [Amazon S3](http://aws.amazon.com/s3/)
+- [Postimage](http://postimage.org/)
+- [Uploads.im](http://uploads.im/apidocs)
 
 ## Usage
 

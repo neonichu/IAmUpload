@@ -4,4 +4,4 @@ cache:
 before_install: 
 - bundle install
 - cd Example && pod install && cd -
-script: pod lib testing
+script: pod lib coverage

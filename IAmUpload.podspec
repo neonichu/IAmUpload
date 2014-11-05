@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "IAmUpload"
-  s.version          = "0.2.0"
+  s.version          = "0.3.0"
   s.summary          = "Objective-C library for uploading files to different webservices, like Amazon S3."
   s.homepage         = "https://github.com/neonichu/IAmUpload"
   s.license          = 'MIT'

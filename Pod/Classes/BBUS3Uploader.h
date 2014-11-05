@@ -10,6 +10,8 @@
 
 @interface BBUS3Uploader : NSObject <BBUFileUpload>
 
++(NSString*)mimeTypeForFileExtension:(NSString*)fileExtension;
+
 @property (nonatomic, copy) NSString* path;
 
 -(instancetype)initWithBucket:(NSString*)bucket key:(NSString*)key secret:(NSString*)secret;

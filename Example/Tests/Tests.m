@@ -7,6 +7,7 @@
 //
 
 #import <IAmUpload/BBUPostImageUploader.h>
+#import <IAmUpload/BBUS3Uploader.h>
 #import <IAmUpload/BBUUploadsImUploader.h>
 
 void _itTestForImageUpload(id self, id<BBUFileUpload> uploader) {
@@ -47,6 +48,23 @@ describe(@"BBUPostImageUploader", ^{
     });
 
     _itTestForImageUpload(self, [BBUPostImageUploader sharedUploader]);
+});
+
+describe(@"BBUS3Uploader", ^{
+    it(@"determines the correct mime type for JPEGs", ^{
+        NSString* fileType = [BBUS3Uploader mimeTypeForFileExtension:@"jpg"];
+        expect(fileType).equal(@"image/jpeg");
+    });
+
+    it(@"determines the correct mime type for PDFs", ^{
+        NSString* fileType = [BBUS3Uploader mimeTypeForFileExtension:@"pdf"];
+        expect(fileType).equal(@"application/pdf");
+    });
+
+    it(@"determines the correct mime type for DOCX", ^{
+        NSString* fileType = [BBUS3Uploader mimeTypeForFileExtension:@"docx"];
+        expect(fileType).equal(@"application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    });
 });
 
 describe(@"BBUUploadsImUploader", ^{

@@ -8,6 +8,10 @@
 
 #import <CommonCrypto/CommonCrypto.h>
 
+#if TARGET_OS_IPHONE
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 #import "BBUS3Uploader.h"
 #import "Utilities.h"
 
@@ -37,6 +41,18 @@
     return [HMAC base64EncodedStringWithOptions:0];
 }
 
++(NSString*)mimeTypeForFileExtension:(NSString*)fileExtension {
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtension, NULL);
+    CFStringRef mimeType = UTTypeCopyPreferredTagWithClass (UTI, kUTTagClassMIMEType);
+    CFRelease(UTI);
+
+    if (!mimeType) {
+        return @"application/octet-stream";
+    }
+
+    return CFBridgingRelease(mimeType);
+}
+
 +(NSString*)rfc2822date {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss Z";
@@ -59,13 +75,14 @@
 }
 
 -(void)uploadFileWithData:(NSData *)data
+            fileExtension:(NSString*)fileExtension
         completionHandler:(BBUFileUploadHandler)handler
           progressHandler:(BBUProgressHandler)progressHandler {
     NSParameterAssert(data);
     NSParameterAssert(handler);
 
-    NSString* contentType = @"image/jpeg";
-    NSString* fileName = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:@"jpg"];
+    NSString* contentType = [[self class] mimeTypeForFileExtension:fileExtension];
+    NSString* fileName = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:fileExtension];
 
     if (self.path) {
         fileName = [self.path stringByAppendingPathComponent:fileName];
@@ -106,6 +123,15 @@
     }];
 
     [task resume];
+}
+
+-(void)uploadFileWithData:(NSData *)data
+        completionHandler:(BBUFileUploadHandler)handler
+          progressHandler:(BBUProgressHandler)progressHandler {
+    [self uploadFileWithData:data
+               fileExtension:@"jpg"
+           completionHandler:handler
+             progressHandler:progressHandler];
 }
 
 #if TARGET_OS_IPHONE

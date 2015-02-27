@@ -56,6 +56,7 @@
 +(NSString*)rfc2822date {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss Z";
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 

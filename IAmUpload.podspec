@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "IAmUpload"
-  s.version          = "0.3.0"
+  s.version          = "0.3.1"
   s.summary          = "Objective-C library for uploading files to different webservices, like Amazon S3."
   s.homepage         = "https://github.com/neonichu/IAmUpload"
   s.license          = 'MIT'
@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes'
   s.public_header_files = 'Pod/Classes/**/BBU*.h'
   
-  s.dependency 'AFNetworking', '~> 2.3.1'
+  s.dependency 'AFNetworking', '~> 2.5'
 end

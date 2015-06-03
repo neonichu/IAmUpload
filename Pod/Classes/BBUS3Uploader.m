@@ -79,11 +79,25 @@
             fileExtension:(NSString*)fileExtension
         completionHandler:(BBUFileUploadHandler)handler
           progressHandler:(BBUProgressHandler)progressHandler {
+    [self uploadFileWithData:data filename:nil fileExtension:fileExtension completionHandler:handler progressHandler:progressHandler];
+}
+
+-(void)uploadFileWithData:(NSData *)data
+                 filename:(NSString *)fileName
+            fileExtension:(NSString*)fileExtension
+        completionHandler:(BBUFileUploadHandler)handler
+          progressHandler:(BBUProgressHandler)progressHandler {
     NSParameterAssert(data);
     NSParameterAssert(handler);
 
     NSString* contentType = [[self class] mimeTypeForFileExtension:fileExtension];
-    NSString* fileName = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:fileExtension];
+
+    if (!fileName) {
+        fileName = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:fileExtension];
+    }
+    else if (fileExtension) {
+        fileName = [fileName stringByAppendingPathExtension:fileExtension];
+    }
 
     if (self.path) {
         fileName = [self.path stringByAppendingPathComponent:fileName];
